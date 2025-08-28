@@ -1,5 +1,3 @@
 # SchoolScheduleAI
 
-test update
-
-123
+AI written to generate school schedules.
