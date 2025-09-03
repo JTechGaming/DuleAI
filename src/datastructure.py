@@ -12,7 +12,11 @@ subjectsFile = dataFolder + "subjects.json"
 studentsFile = dataFolder + "students.json"
 classroomsFile = dataFolder + "classrooms.json"
 fixedHoursFile = dataFolder + "fixed_hours.json"
-    
+
+trainingDataFolder = dataFolder + "training/"
+trainedDataFolder = dataFolder + "trained/"
+trainedModelFolder = dataFolder + "trained_models/"
+
 def load_json_file(file_path):
     with open(file_path, "r") as file:
         return json.load(file)
