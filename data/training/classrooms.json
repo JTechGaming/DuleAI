@@ -1,0 +1,45 @@
+[
+    {
+        "number": 1,
+        "capacity": 32,
+        "specialties": [
+            "studyplaza",
+            "auditorium",
+            "music"
+        ]
+    },
+    {
+        "number": 2,
+        "capacity": 26,
+        "specialties": [
+            "science",
+            "studyplaza"
+        ]
+    },
+    {
+        "number": 3,
+        "capacity": 25,
+        "specialties": [
+            "cafeteria",
+            "science",
+            "library"
+        ]
+    },
+    {
+        "number": 4,
+        "capacity": 33,
+        "specialties": [
+            "sports",
+            "cafeteria",
+            "computers"
+        ]
+    },
+    {
+        "number": 5,
+        "capacity": 28,
+        "specialties": [
+            "cafeteria",
+            "library"
+        ]
+    }
+]

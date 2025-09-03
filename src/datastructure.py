@@ -177,7 +177,7 @@ class TeachersDataStructure:
         return {
             "name": self.name,
             "abbreviation": self.abbreviation,
-            "availability": self.availability,
+            "availability": {str(day.value) if isinstance(day, Days) else str(day): hours for day, hours in self.availability.items()},
             "subjects": self.subjects
         }
 
