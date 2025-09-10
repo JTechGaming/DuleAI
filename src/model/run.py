@@ -10,3 +10,4 @@ class Run:
         self.model = cp_model.CpModel()
         self.solver = cp_model.CpSolver()
         
+        

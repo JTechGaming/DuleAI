@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Alice Smith",
+        "abbreviation": "AS",
+        "availability": {
+            "monday": [1, 2, 3, 4],
+            "tuesday": [1, 2, 3],
+            "wednesday": [2, 3, 4]
+        },
+        "subjects": ["Math", "Physics"]
+    },
+    {
+        "name": "Bob Johnson",
+        "abbreviation": "BJ",
+        "availability": {
+            "monday": [2, 3],
+            "tuesday": [1, 2, 3, 4],
+            "thursday": [1, 2]
+        },
+        "subjects": ["English", "History"]
+    }
+]

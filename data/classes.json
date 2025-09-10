@@ -1,0 +1,8 @@
+[
+    {
+        "name": "Class1",
+        "year": ["mavo", 1, 1],
+        "tutor": "AS",
+        "coreSubjects": ["Math", "English"]
+    }
+]

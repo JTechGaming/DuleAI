@@ -214,6 +214,42 @@ class StudentDataStructure:
     preferredOddHours: list[int] # optional
     subjects: list[str]
 
+    def __init__(self):
+        self.name = ""
+        self.className = ""
+        self.profile = Profile.NT
+        self.studentNumber = ""
+        self.preferredOddHours = []
+        self.subjects = []
+
+    def from_dict(self, data: dict):
+        self.name = data.get("name", "")
+        self.className = data.get("className", "")
+        self.profile = Profile[data.get("profile", "NT").upper()]
+        self.studentNumber = data.get("studentNumber", "")
+        self.preferredOddHours = data.get("preferredOddHours", [])
+        self.subjects = data.get("subjects", [])
+    
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+            "className": self.className,
+            "profile": self.profile.value,
+            "studentNumber": self.studentNumber,
+            "preferredOddHours": self.preferredOddHours,
+            "subjects": self.subjects
+        }
+    
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), indent=4)
+
+    @classmethod
+    def from_json(cls, json_string: str):
+        data = json.loads(json_string)
+        instance = cls()
+        instance.from_dict(data)
+        return instance
+
 class ClassDataStructure:
     name: str
     year: tuple[Level, int, int] # Level, grade, section(A, B etc.)
@@ -266,6 +302,9 @@ class Type(Enum):
     LEAST_ODD_HOURS_STUDENTS = "least_odd_hours_students"
     LEAST_ODD_HOURS_TEACHERS = "least_odd_hours_teachers"
 
+def parse_time(time_str: str) -> datetime.time:
+    return datetime.time.fromisoformat(time_str)
+
 class CommonDataStructure:
     hours: list[tuple[HourType, Days, datetime.time, datetime.time]] # List of tuples with hour type, day, start and end time
     preferredOddHoursEnabled : bool
@@ -278,7 +317,7 @@ class CommonDataStructure:
 
     def from_dict(self, data: dict):
         self.hours = [
-            (HourType[hour[0].upper()], Days[hour[1].upper()], hour[2], hour[3])
+            (HourType[hour[0].upper()], Days[hour[1].upper()], parse_time(hour[2]), parse_time(hour[3]))
             for hour in data.get("hours", [])
         ]
         self.preferredOddHoursEnabled = data.get("preferredOddHoursEnabled", False)
@@ -346,9 +385,15 @@ class OutputTeacherScheduleStructure:
 
     def from_dict(self, data: dict):
         self.teacherName = data.get("teacherName", "")
-        self.schedule = [
-            OutputSubjectDataStructure(**subject) for subject in data.get("schedule", [])
-        ]
+        self.schedule = []
+        for subject in data.get("schedule", []):
+            s = OutputSubjectDataStructure(
+                subjectName=subject["subjectName"],
+                teacherName=subject["teacherName"],
+                classRoomNumber=subject["classRoomNumber"],
+                timeSlot=tuple(subject["timeSlot"])
+            )
+            self.schedule.append(s)
 
 class OutputStudentScheduleStructure:
     studentName: str
@@ -366,9 +411,15 @@ class OutputStudentScheduleStructure:
 
     def from_dict(self, data: dict):
         self.studentName = data.get("studentName", "")
-        self.schedule = [
-            OutputSubjectDataStructure(**subject) for subject in data.get("schedule", [])
-        ]
+        self.schedule = []
+        for subject in data.get("schedule", []):
+            s = OutputSubjectDataStructure(
+                subjectName=subject["subjectName"],
+                teacherName=subject["teacherName"],
+                classRoomNumber=subject["classRoomNumber"],
+                timeSlot=tuple(subject["timeSlot"])
+            )
+            self.schedule.append(s)
 
 class OutputDataStructure():
     teacherSchedules: list[OutputTeacherScheduleStructure]
@@ -398,3 +449,12 @@ class OutputDataStructure():
     def from_json(self, json_string: str):
         data = json.loads(json_string)
         self.from_dict(data)
+
+def load_all_data():
+    teachers = [TeachersDataStructure.from_json(json.dumps(t)) for t in load_json_file(teachersFile)]
+    classes = [ClassDataStructure.from_json(json.dumps(c)) for c in load_json_file(classesFile)]
+    subjects = [SubjectDataStructure.from_json(json.dumps(s)) for s in load_json_file(subjectsFile)]
+    classrooms = [ClassroomDataStructure.from_json(json.dumps(c)) for c in load_json_file(classroomsFile)]
+    fixed_hours = [FixedHourDataStructure.from_json(json.dumps(f)) for f in load_json_file(fixedHoursFile)]
+    common = CommonDataStructure.from_json(json.dumps(load_json_file(commonFile)))
+    return teachers, classes, subjects, classrooms, fixed_hours, common

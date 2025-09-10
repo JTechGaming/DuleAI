@@ -1,0 +1,4 @@
+[
+    {"name": "Math", "abbreviation": "MATH", "requiredHours": 2, "coreSubject": true, "requiredClassroomsParameters": []},
+    {"name": "English", "abbreviation": "ENG", "requiredHours": 2, "coreSubject": true, "requiredClassroomsParameters": []}
+]
