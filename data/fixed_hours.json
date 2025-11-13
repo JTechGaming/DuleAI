@@ -1,0 +1,14 @@
+[
+    {
+        "day": "Monday",
+        "name": "Regular",
+        "classroomID": "0",
+        "hour": 3
+    },
+    {
+        "day": "Wednesday",
+        "name": "Regular2",
+        "classroomID": "0",
+        "hour": 4
+    }
+]
