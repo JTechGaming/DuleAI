@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 from datastructure import *
 
@@ -125,21 +126,34 @@ class Run:
                     for time in self.time_slots:
                         for room in self.classroom_numbers:
                             self.model.Add(x[(subject, teacher, time, room)] == 0)
-                
-        # Solve the model
+        # Solve the model and collect results into a list to produce valid JSON
+        results = []
+
         status = self.solver.Solve(self.model)
-        if status == cp_model.OPTIMAL:
+        if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
             for subject in self.subject_names:
                 for teacher in self.teacher_names:
                     for time in self.time_slots:
                         for room in self.classroom_numbers:
                             if self.solver.Value(x[(subject, teacher, time, room)]) == 1:
-                                print(f' - {subject} with {teacher} at {time[1].value} : {day_to_lesson_slots.get(time[1], []).index(time)} in {room}')
-                            #else:
-                                #print(f' - {subject} with {teacher} at {self.time_slots.index(time)} in {room}: Not Scheduled')
+                                lesson_index = day_to_lesson_slots.get(time[1], []).index(time)
+                                print(f' - {subject} with {teacher} at {time[1].value} : {lesson_index} in {room}')
+                                results.append({
+                                    "subject": subject,
+                                    "teacher": teacher,
+                                    "class": class_name,
+                                    "day": time[1].value,
+                                    "lesson_index": lesson_index,
+                                    "classroom": room
+                                })
         else:
             print('No solution found.')
 
+        os.makedirs("data/out", exist_ok=True)
+        with open("data/out/generated.json", "w", encoding="utf-8") as file:
+            json.dump(results, file, indent=2, ensure_ascii=False)
+
+        print(f'Solver status: {self.solver.StatusName(status)}')
         print(f'Solver status: {self.solver.StatusName(status)}')
 
 run = Run()

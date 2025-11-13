@@ -1,0 +1,121 @@
+[
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "day": "monday",
+    "lesson_index": 2,
+    "classroom": 127
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "day": "tuesday",
+    "lesson_index": 0,
+    "classroom": 214
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "day": "tuesday",
+    "lesson_index": 3,
+    "classroom": 209
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "day": "friday",
+    "lesson_index": 4,
+    "classroom": 105
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "day": "tuesday",
+    "lesson_index": 0,
+    "classroom": 209
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "day": "wednesday",
+    "lesson_index": 2,
+    "classroom": 127
+  },
+  {
+    "subject": "Physics",
+    "teacher": "Alice Smith",
+    "day": "monday",
+    "lesson_index": 0,
+    "classroom": 115
+  },
+  {
+    "subject": "Physics",
+    "teacher": "Alice Smith",
+    "day": "monday",
+    "lesson_index": 3,
+    "classroom": 105
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "day": "monday",
+    "lesson_index": 2,
+    "classroom": 121
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "day": "thursday",
+    "lesson_index": 0,
+    "classroom": 129
+  },
+  {
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "day": "thursday",
+    "lesson_index": 3,
+    "classroom": 127
+  },
+  {
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "day": "friday",
+    "lesson_index": 3,
+    "classroom": 124
+  },
+  {
+    "subject": "Chemistry",
+    "teacher": "Carol White",
+    "day": "thursday",
+    "lesson_index": 0,
+    "classroom": 115
+  },
+  {
+    "subject": "Chemistry",
+    "teacher": "Carol White",
+    "day": "thursday",
+    "lesson_index": 4,
+    "classroom": 207
+  },
+  {
+    "subject": "Computer Science",
+    "teacher": "David Lee",
+    "day": "tuesday",
+    "lesson_index": 2,
+    "classroom": 303
+  },
+  {
+    "subject": "Computer Science",
+    "teacher": "David Lee",
+    "day": "thursday",
+    "lesson_index": 2,
+    "classroom": 110
+  },
+  {
+    "subject": "Art",
+    "teacher": "Eva Green",
+    "day": "thursday",
+    "lesson_index": 0,
+    "classroom": 101
+  }
+]
