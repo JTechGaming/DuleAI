@@ -5,7 +5,9 @@
         "availability": {
             "monday": [1, 2, 3, 4],
             "tuesday": [1, 2, 3],
-            "wednesday": [2, 3, 4]
+            "wednesday": [2, 3, 4],
+            "thursday": [6, 7, 8, 9],
+            "friday": [1, 2, 3, 4, 5, 6, 7, 8, 9]
         },
         "subjects": ["Math", "Physics"]
     },
@@ -15,8 +17,46 @@
         "availability": {
             "monday": [2, 3],
             "tuesday": [1, 2, 3, 4],
-            "thursday": [1, 2]
+            "wednesday": [2, 3, 4],
+            "thursday": [1, 2, 3, 4, 5],
+            "friday": [1, 2, 3, 4, 5, 6]
         },
         "subjects": ["English", "History"]
+    },
+    {
+        "name": "Carol White",
+        "abbreviation": "CW",
+        "availability": {
+            "monday": [1, 2, 3, 4, 5],
+            "tuesday": [1, 2, 3, 4, 5],
+            "wednesday": [1, 2, 3, 4, 5],
+            "thursday": [1, 2, 3, 4, 5],
+            "friday": [1, 2, 3, 4, 5]
+        },
+        "subjects": ["Biology", "Chemistry"]
+    },
+    {
+        "name": "David Lee",
+        "abbreviation": "DL",
+        "availability": {
+            "monday": [3, 4, 5, 6],
+            "tuesday": [2, 3, 4, 5],
+            "wednesday": [1, 2, 3, 4],
+            "thursday": [1, 2, 3, 4],
+            "friday": [1, 2, 3, 4]
+        },
+        "subjects": ["Math", "Computer Science"]
+    },
+    {
+        "name": "Eva Green",
+        "abbreviation": "EG",
+        "availability": {
+            "monday": [1, 2, 3],
+            "tuesday": [1, 2, 3],
+            "wednesday": [1, 2, 3],
+            "thursday": [1, 2, 3],
+            "friday": [1, 2, 3]
+        },
+        "subjects": ["English", "Art"]
     }
 ]

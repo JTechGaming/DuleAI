@@ -2,7 +2,7 @@ import json
 from enum import Enum
 import datetime
 
-dataFolder = "../data/"
+dataFolder = "data/"
 
 commonFile = dataFolder + "common.json"
 teachersFile = dataFolder + "teachers.json"
@@ -71,10 +71,10 @@ class ClassroomDataStructure:
 
     @classmethod
     def from_json(cls, json_string: str):
-        data = json.loads(json_string)
-        instance = cls()
-        instance.from_dict(data)
-        return instance
+        for data in json.loads(json_string):
+            instance = cls()
+            instance.from_dict(data)
+            yield instance
 
 class FixedHourDataStructure:
     day: str
@@ -147,10 +147,10 @@ class SubjectDataStructure:
 
     @classmethod
     def from_json(cls, json_string: str):
-        data = json.loads(json_string)
-        instance = cls()
-        instance.from_dict(data)
-        return instance
+        for data in json.loads(json_string):
+            instance = cls()
+            instance.from_dict(data)
+            yield instance
 
 class Days(Enum):
     MONDAY = "monday"
@@ -321,7 +321,7 @@ class CommonDataStructure:
             for hour in data.get("hours", [])
         ]
         self.preferredOddHoursEnabled = data.get("preferredOddHoursEnabled", False)
-        self.generationType = Type[data.get("generationType", Type.BALANCED).upper()]
+        self.generationType = Type[str(data.get("generationType", Type.BALANCED)).upper()]
 
     def to_dict(self) -> dict:
         return {

@@ -1,4 +1,10 @@
 [
-    {"name": "Math", "abbreviation": "MATH", "requiredHours": 2, "coreSubject": true, "requiredClassroomsParameters": []},
-    {"name": "English", "abbreviation": "ENG", "requiredHours": 2, "coreSubject": true, "requiredClassroomsParameters": []}
+    {"name": "Math", "abbreviation": "MATH", "requiredHours": 3, "coreSubject": true, "requiredClassroomsParameters": []},
+    {"name": "English", "abbreviation": "ENG", "requiredHours": 3, "coreSubject": true, "requiredClassroomsParameters": []},
+    {"name": "Physics", "abbreviation": "PHY", "requiredHours": 2, "coreSubject": false, "requiredClassroomsParameters": []},
+    {"name": "History", "abbreviation": "HIS", "requiredHours": 2, "coreSubject": false, "requiredClassroomsParameters": []},
+    {"name": "Biology", "abbreviation": "BIO", "requiredHours": 2, "coreSubject": false, "requiredClassroomsParameters": []},
+    {"name": "Chemistry", "abbreviation": "CHEM", "requiredHours": 2, "coreSubject": false, "requiredClassroomsParameters": []},
+    {"name": "Computer Science", "abbreviation": "CS", "requiredHours": 2, "coreSubject": false, "requiredClassroomsParameters": []},
+    {"name": "Art", "abbreviation": "ART", "requiredHours": 1, "coreSubject": false, "requiredClassroomsParameters": []}
 ]
