@@ -10,8 +10,7 @@ let formData = {
         wednesday: [],
         thursday: [],
         friday: []
-    },
-    fixedHours: []
+    }
 };
 
 // Saved configurations management
@@ -345,19 +344,19 @@ function refreshTimeSlotIndices(day) {
 // Fixed hours management
 function addFixedHour() {
     const container = document.getElementById('fixed-hours-container');
-    const index = formData.fixedHours.length;
+    const currentCount = container.children.length;
     
     const fixedHourDiv = document.createElement('div');
     fixedHourDiv.className = 'form-item';
     fixedHourDiv.innerHTML = `
         <div class="form-item-header">
-            <h4>Fixed Hour ${index + 1}</h4>
-            <button type="button" class="remove-btn" onclick="removeFixedHour(${index})">×</button>
+            <h4>Fixed Hour ${currentCount + 1}</h4>
+            <button type="button" class="remove-btn" onclick="removeFixedHour(this)">×</button>
         </div>
         <div class="form-row">
             <div class="form-group">
                 <label>Day:</label>
-                <select id="fixed-day-${index}" required>
+                <select required>
                     <option value="Monday">Monday</option>
                     <option value="Tuesday">Tuesday</option>
                     <option value="Wednesday">Wednesday</option>
@@ -367,42 +366,44 @@ function addFixedHour() {
             </div>
             <div class="form-group">
                 <label>Hour (Lesson Number):</label>
-                <input type="number" id="fixed-hour-${index}" min="1" max="9" value="1" required>
+                <input type="number" min="1" max="9" value="1" required>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group">
                 <label>Name/Description:</label>
-                <input type="text" id="fixed-name-${index}" placeholder="e.g., Assembly" required>
+                <input type="text" placeholder="e.g., Assembly" required>
             </div>
             <div class="form-group">
                 <label>Classroom ID:</label>
-                <input type="text" id="fixed-classroom-${index}" placeholder="e.g., 101" required>
+                <input type="text" placeholder="e.g., 101" required>
             </div>
         </div>
     `;
     
     container.appendChild(fixedHourDiv);
-    formData.fixedHours.push({});
+    refreshFixedHourIndices();
 }
 
-function removeFixedHour(index) {
-    const container = document.getElementById('fixed-hours-container');
-    container.children[index].remove();
-    formData.fixedHours.splice(index, 1);
+function removeFixedHour(buttonElement) {
+    const formItem = buttonElement.closest('.form-item');
+    formItem.remove();
     refreshFixedHourIndices();
 }
 
 function clearFixedHours() {
     document.getElementById('fixed-hours-container').innerHTML = '';
-    formData.fixedHours = [];
 }
 
 function refreshFixedHourIndices() {
     const items = document.querySelectorAll('#fixed-hours-container .form-item');
     items.forEach((item, index) => {
+        // Update header text
         item.querySelector('h4').textContent = `Fixed Hour ${index + 1}`;
-        item.querySelector('.remove-btn').onclick = () => removeFixedHour(index);
+        
+        // Update remove button onclick to use element reference
+        const removeBtn = item.querySelector('.remove-btn');
+        removeBtn.onclick = () => removeFixedHour(removeBtn);
     });
 }
 
@@ -511,19 +512,51 @@ function collectFormData() {
     
     // Collect fixed hours
     const fixedHours = [];
-    document.querySelectorAll('#fixed-hours-container .form-item').forEach((item, index) => {
-        const day = document.getElementById(`fixed-day-${index}`).value;
-        const hour = parseInt(document.getElementById(`fixed-hour-${index}`).value);
-        const name = document.getElementById(`fixed-name-${index}`).value;
-        const classroomID = document.getElementById(`fixed-classroom-${index}`).value;
+    const fixedHourItems = document.querySelectorAll('#fixed-hours-container .form-item');
+    console.log('Found fixed hour items:', fixedHourItems.length);
+    
+    fixedHourItems.forEach((item, index) => {
+        console.log('Processing fixed hour item', index);
+        const daySelect = item.querySelector('select');
+        const hourInput = item.querySelector('input[type="number"]');
+        const textInputs = item.querySelectorAll('input[type="text"]');
+        const nameInput = textInputs[0];
+        const classroomInput = textInputs[1];
         
-        if (day && hour && name && classroomID) {
-            fixedHours.push({
-                day,
-                hour,
-                name,
-                classroomID
+        console.log('Elements found:', {
+            daySelect: !!daySelect,
+            hourInput: !!hourInput,
+            nameInput: !!nameInput,
+            classroomInput: !!classroomInput
+        });
+        
+        if (daySelect && hourInput && nameInput && classroomInput) {
+            const day = daySelect.value;
+            const hour = parseInt(hourInput.value);
+            const name = nameInput.value;
+            const classroomID = classroomInput.value;
+            
+            console.log('Fixed hour values:', { day, hour, name, classroomID });
+            console.log('Validation check:', { 
+                dayValid: !!day, 
+                hourValid: !isNaN(hour) && hour > 0, 
+                nameValid: !!name, 
+                classroomIDValid: !!classroomID 
             });
+            
+            if (day && hour && name && classroomID) {
+                console.log('Adding fixed hour to array');
+                fixedHours.push({
+                    day,
+                    hour,
+                    name,
+                    classroomID
+                });
+            } else {
+                console.log('Skipping fixed hour due to missing values');
+            }
+        } else {
+            console.log('Skipping fixed hour due to missing elements');
         }
     });
     
@@ -556,6 +589,9 @@ async function generateSchedule() {
         statusDiv.innerHTML = '<div class="status-info">Collecting form data...</div>';
         
         const data = collectFormData();
+        
+        // Debug: Log fixed hours
+        console.log('Collected fixed hours:', data.fixedHours);
         
         // Validate data
         if (data.subjects.length === 0) {
@@ -600,6 +636,7 @@ async function generateSchedule() {
 // Save JSON files through backend API
 async function saveJSONFiles(data) {
     try {
+        console.log('Sending to backend - Fixed Hours:', data.fixedHours);
         const response = await fetch('/api/save-json-files', {
             method: 'POST',
             headers: {
@@ -890,8 +927,7 @@ function clearAllForms() {
             wednesday: [],
             thursday: [],
             friday: []
-        },
-        fixedHours: []
+        }
     };
 }
 
@@ -1003,11 +1039,21 @@ function loadFormData(data) {
     if (data.fixedHours && data.fixedHours.length > 0) {
         data.fixedHours.forEach(fixedHour => {
             addFixedHour();
-            const index = formData.fixedHours.length - 1;
-            document.getElementById(`fixed-day-${index}`).value = fixedHour.day || 'Monday';
-            document.getElementById(`fixed-hour-${index}`).value = fixedHour.hour || 1;
-            document.getElementById(`fixed-name-${index}`).value = fixedHour.name || '';
-            document.getElementById(`fixed-classroom-${index}`).value = fixedHour.classroomID || '';
+            // Get the last added fixed hour element
+            const container = document.getElementById('fixed-hours-container');
+            const lastItem = container.lastElementChild;
+            
+            if (lastItem) {
+                const daySelect = lastItem.querySelector('select');
+                const hourInput = lastItem.querySelector('input[type="number"]');
+                const nameInput = lastItem.querySelector('input[type="text"]:nth-of-type(1)');
+                const classroomInput = lastItem.querySelector('input[type="text"]:nth-of-type(2)');
+                
+                if (daySelect) daySelect.value = fixedHour.day || 'Monday';
+                if (hourInput) hourInput.value = fixedHour.hour || 1;
+                if (nameInput) nameInput.value = fixedHour.name || '';
+                if (classroomInput) classroomInput.value = fixedHour.classroomID || '';
+            }
         });
     }
 }
