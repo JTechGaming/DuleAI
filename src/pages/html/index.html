@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Duleai</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuleAI - AI Schedule Generator</title>
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-<header>    <h1 style="color:lightskyblue; text-align: center;">This is DULE.ai</h1>
-<img src ="Zonder titel54_20250910115010.PNG" alt="logo" style="display: block; margin: 0 auto; width: 500px; height: 500px;">
-    
+    <div id="navbar">
+        <div></div> <!-- Empty div for spacing -->
+        <button id="dark-mode-toggle" onclick="darkModeToggle()">Dark Mode</button>
+    </div>
+    <header>
+        <h1>DULE.AI</h1>
+        <div class="logo-container">
+            <img src="logo.png" alt="DULE.AI Logo" class="logo">
+        </div>
+        <p class="subtitle">AI that turns your data and wishes into structured schedules for your workplace or school.</p>
+    </header>
 
-<br>
-<h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: left;">Dule.ai is an ai that turns your data and wishes into structured schedules for your workplace or school.</h2>
-<br>
-</header>
+    <main>
+        <section class="content-section">
+            <h2>Data we need to make a schedule that works for you!</h2>
+            <ul class="data-list">
+                <li>Teachers and their preferences</li>
+                <li>Classes or groups</li>
+                <li>Rooms</li>
+                <li>Numbers of classes and hours</li>
+                <li>Flexibility</li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <div class="video-link">
+                <a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DdQw4w9WgXcQ&ved=2ahUKEwjLl_Lh15aQAxWflP0HHXwmHR8QwqsBegQIFRAG&usg=AOvVaw0aHtehaphMhOCAkCydRLZU" class="intro-video-btn">📺 Watch Introduction Video</a>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <div class="cta-section">
+                <button onclick="location.href='generate_settings.html'" class="generate-btn">Generate A Schedule</button>
+            </div>
+        </section>
+        
+        <section class="content-section tagline">
+            <h2>DULE.AI - BECAUSE THE SCHEDULES CAN NEVER GET BETTER</h2>
+        </section>
+    </main>
 
-<h2>data we need for a schedule that works for you!</h2>
-<ul>
-<li>Teachers and their preferences</li>
-<li>Classes or groups</li>
-<li>Rooms</li>
-<li>Numbers of classes and hours</li>
-<li>Flexibility</li>
-
-<a href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://www.youtube.com/watch%3Fv%3DdQw4w9WgXcQ&ved=2ahUKEwjLl_Lh15aQAxWflP0HHXwmHR8QwqsBegQIFRAG&usg=AOvVaw0aHtehaphMhOCAkCydRLZU">Click here for an introduction video!</a>
- 
-
-
-<h2 style="text-align: center;" >DULE.AI, CAUSE THE ROOSTERS CAN NEVER GET BETTER</h2>
-
-<footer style="text-align: center;">Contact us:
-    <br>
-    Email:duleai@email.com
-    <br>
-    Phone: +123456789
-    <br>
-    Address: 123 AI Roostermaker 69, Atrecht, Nederland
-
-
-
-
-
-</footer>
-
-</ul>
+    <footer>
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+            <p><strong>Email:</strong> duleai@email.com</p>
+            <p><strong>Phone:</strong> +123456789</p>
+            <p><strong>Address:</strong> 123 AI Roostermaker 69, Atrecht, Nederland</p>
+        </div>
+        <p>&copy; 2025 DuleAI</p>
+    </footer>
+    <script src="../js/schedule.js"></script>
 </body>
-
-
-
-
 </html>

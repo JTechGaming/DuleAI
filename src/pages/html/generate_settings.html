@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Schedule</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div id="navbar">
+        <button onclick="location.href='index.html'" id="home-button">Home</button>
+        <button id="dark-mode-toggle" onclick="darkModeToggle()">Toggle Dark Mode</button>
+    </div>
+    <header>
+        <h1>Generate A Schedule</h1>
+        <p class="subtitle">Configure your school data to generate a custom schedule</p>
+        
+        <!-- Saved Configurations -->
+        <div class="saved-configs-section">
+            <div class="saved-configs-controls">
+                <div class="config-selector">
+                    <label for="saved-configs-select">Saved Configurations:</label>
+                    <div class="selector-with-refresh">
+                        <select id="saved-configs-select" onchange="loadConfiguration()">
+                            <option value="">Select a saved configuration...</option>
+                        </select>
+                        <button type="button" class="refresh-btn" onclick="refreshDropdown()" title="Refresh configurations list">
+                            🔄
+                        </button>
+                    </div>
+                </div>
+                <div class="config-actions">
+                    <button type="button" class="config-btn save-btn" onclick="saveCurrentConfiguration()" title="Save current configuration">
+                        💾 Save
+                    </button>
+                    <button type="button" class="config-btn delete-btn" onclick="deleteConfiguration()" title="Delete selected configuration">
+                        🗑️ Delete
+                    </button>
+                    <button type="button" class="config-btn export-btn" onclick="exportConfiguration()" title="Export configuration as JSON">
+                        📤 Export
+                    </button>
+                    <button type="button" class="config-btn import-btn" onclick="importConfiguration()" title="Import configuration from JSON">
+                        📥 Import
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="save-status" class="save-status"></div>
+    </header>
+    <main>
+        <div class="form-container">
+            <!-- Navigation Tabs -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="showTab('subjects')">Subjects</button>
+                <button class="tab-btn" onclick="showTab('teachers')">Teachers</button>
+                <button class="tab-btn" onclick="showTab('classrooms')">Classrooms</button>
+                <button class="tab-btn" onclick="showTab('classes')">Classes</button>
+                <button class="tab-btn" onclick="showTab('schedule')">Schedule Hours</button>
+                <button class="tab-btn" onclick="showTab('fixed')">Fixed Hours</button>
+            </div>
+
+            <!-- Subjects Tab -->
+            <div id="subjects-tab" class="tab-content active">
+                <div class="form-section">
+                    <h2>Subjects Configuration</h2>
+                    <div class="form-actions">
+                        <button type="button" class="add-btn" onclick="addSubject()">+ Add Subject</button>
+                        <button type="button" class="clear-btn" onclick="clearSubjects()">Clear All</button>
+                    </div>
+                    <div id="subjects-container" class="items-container">
+                        <!-- Subjects will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teachers Tab -->
+            <div id="teachers-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Teachers Configuration</h2>
+                    <div class="form-actions">
+                        <button type="button" class="add-btn" onclick="addTeacher()">+ Add Teacher</button>
+                        <button type="button" class="clear-btn" onclick="clearTeachers()">Clear All</button>
+                    </div>
+                    <div id="teachers-container" class="items-container">
+                        <!-- Teachers will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classrooms Tab -->
+            <div id="classrooms-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Classrooms Configuration</h2>
+                    <div class="form-actions">
+                        <button type="button" class="add-btn" onclick="addClassroom()">+ Add Classroom</button>
+                        <button type="button" class="clear-btn" onclick="clearClassrooms()">Clear All</button>
+                    </div>
+                    <div id="classrooms-container" class="items-container">
+                        <!-- Classrooms will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes Tab -->
+            <div id="classes-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Classes Configuration</h2>
+                    <div class="form-actions">
+                        <button type="button" class="add-btn" onclick="addClass()">+ Add Class</button>
+                        <button type="button" class="clear-btn" onclick="clearClasses()">Clear All</button>
+                    </div>
+                    <div id="classes-container" class="items-container">
+                        <!-- Classes will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Hours Tab -->
+            <div id="schedule-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>⏰ Schedule Hours Configuration</h2>
+                    <p class="info-text">Configure the daily schedule with lesson times and breaks</p>
+                    
+                    <!-- Generation Settings -->
+                    <div class="generation-settings">
+                        <h3>Generation Settings</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="generation-type">Generation Type:</label>
+                                <select id="generation-type">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="early_start_early_end">Early Start, Early End</option>
+                                    <option value="late_start_late_end">Late Start, Late End</option>
+                                    <option value="least_odd_hours_students">Least Odd Hours (Students)</option>
+                                    <option value="least_odd_hours_teachers">Least Odd Hours (Teachers)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="preferred-odd-hours"> Enable Preferred Odd Hours
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-config">
+                        <div class="day-schedule" data-day="monday">
+                            <h3>Monday</h3>
+                            <div class="time-slots" id="monday-slots"></div>
+                            <button type="button" class="add-btn small" onclick="addTimeSlot('monday')">+ Add Time Slot</button>
+                        </div>
+                        <div class="day-schedule" data-day="tuesday">
+                            <h3>Tuesday</h3>
+                            <div class="time-slots" id="tuesday-slots"></div>
+                            <button type="button" class="add-btn small" onclick="addTimeSlot('tuesday')">+ Add Time Slot</button>
+                        </div>
+                        <div class="day-schedule" data-day="wednesday">
+                            <h3>Wednesday</h3>
+                            <div class="time-slots" id="wednesday-slots"></div>
+                            <button type="button" class="add-btn small" onclick="addTimeSlot('wednesday')">+ Add Time Slot</button>
+                        </div>
+                        <div class="day-schedule" data-day="thursday">
+                            <h3>Thursday</h3>
+                            <div class="time-slots" id="thursday-slots"></div>
+                            <button type="button" class="add-btn small" onclick="addTimeSlot('thursday')">+ Add Time Slot</button>
+                        </div>
+                        <div class="day-schedule" data-day="friday">
+                            <h3>Friday</h3>
+                            <div class="time-slots" id="friday-slots"></div>
+                            <button type="button" class="add-btn small" onclick="addTimeSlot('friday')">+ Add Time Slot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fixed Hours Tab -->
+            <div id="fixed-tab" class="tab-content">
+                <div class="form-section">
+                    <h2>Fixed Hours Configuration</h2>
+                    <p class="info-text">Set specific lessons that must occur at fixed times</p>
+                    <div class="form-actions">
+                        <button type="button" class="add-btn" onclick="addFixedHour()">+ Add Fixed Hour</button>
+                        <button type="button" class="clear-btn" onclick="clearFixedHours()">Clear All</button>
+                    </div>
+                    <div id="fixed-hours-container" class="items-container">
+                        <!-- Fixed hours will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <div class="generate-section">
+                <button type="button" id="generate-btn" class="generate-btn" onclick="generateSchedule()">
+                    Generate Schedule
+                </button>
+                <div id="generation-status" class="status-message"></div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h3>Contact Us</h3>
+        <div class="contact-info">
+            <p><strong>Email:</strong> duleai@email.com</p>
+            <p><strong>Phone:</strong> +123456789</p>
+            <p><strong>Address:</strong> 123 AI Roostermaker 69, Atrecht, Nederland</p>
+        </div>
+        <p>&copy; 2025 DuleAI</p>
+    </footer>
+    <script src="../js/schedule.js"></script>
+    <script src="../js/generate_settings.js"></script>
+</body>
+</html>

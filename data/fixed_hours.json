@@ -1,14 +1,14 @@
 [
-    {
-        "day": "Monday",
-        "name": "Regular",
-        "classroomID": "0",
-        "hour": 3
-    },
-    {
-        "day": "Wednesday",
-        "name": "Regular2",
-        "classroomID": "0",
-        "hour": 4
-    }
+  {
+    "day": "Monday",
+    "hour": 3,
+    "name": "Regular",
+    "classroomID": "0"
+  },
+  {
+    "day": "Wednesday",
+    "hour": 4,
+    "name": "Regular2",
+    "classroomID": "0"
+  }
 ]
