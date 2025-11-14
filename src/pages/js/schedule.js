@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            // Query all the classes used in the schedule data
+            // Query all the classes used in the schedule data (exclude "All Classes" from dropdown)
             const classSet = new Set();
             scheduleData.forEach(item => {
-                if (item.class) {
+                if (item.class && item.class !== "All Classes") {
                     classSet.add(item.class);
                 }
             });
@@ -152,7 +152,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Function to filter schedule by selected class
             function filterScheduleByClass(selectedClass) {
-                const filteredData = currentScheduleData.filter(item => item.class === selectedClass);
+                const filteredData = currentScheduleData.filter(item => 
+                    item.class === selectedClass || item.class === "All Classes"
+                );
                 renderSchedule(filteredData);
             }
 
