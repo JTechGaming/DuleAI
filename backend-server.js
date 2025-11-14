@@ -166,10 +166,10 @@ app.post('/api/run-schedule-generator', async (req, res) => {
                 pythonProcess.kill();
                 res.status(408).json({
                     success: false,
-                    error: 'Python script execution timed out after 60 seconds'
+                    error: 'Python script execution timed out after 90 seconds'
                 });
             }
-        }, 60000); // 60 second timeout
+        }, 180000); // 180 second timeout (to allow for solver timeout + overhead)
         
         // Clear timeout if process completes normally
         pythonProcess.on('close', () => {
