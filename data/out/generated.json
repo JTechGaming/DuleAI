@@ -1,72 +1,136 @@
 [
   {
     "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class1",
+    "day": "monday",
+    "lesson_index": 2,
+    "classroom": 216
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class1",
+    "day": "friday",
+    "lesson_index": 5,
+    "classroom": 109
+  },
+  {
+    "subject": "Math",
     "teacher": "David Lee",
     "class": "Class1",
     "day": "tuesday",
-    "lesson_index": 4,
-    "classroom": 101
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class1",
-    "day": "wednesday",
-    "lesson_index": 0,
-    "classroom": 303
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class1",
-    "day": "thursday",
-    "lesson_index": 1,
-    "classroom": 216
+    "lesson_index": 2,
+    "classroom": 204
   },
   {
     "subject": "English",
     "teacher": "Bob Johnson",
     "class": "Class1",
-    "day": "friday",
-    "lesson_index": 4,
-    "classroom": 205
+    "day": "wednesday",
+    "lesson_index": 3,
+    "classroom": 216
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class1",
+    "day": "wednesday",
+    "lesson_index": 2,
+    "classroom": 201
   },
   {
     "subject": "English",
     "teacher": "Eva Green",
     "class": "Class1",
     "day": "thursday",
-    "lesson_index": 0,
-    "classroom": 202
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class1",
-    "day": "friday",
-    "lesson_index": 0,
+    "lesson_index": 2,
     "classroom": 214
   },
   {
     "subject": "Math",
     "teacher": "Alice Smith",
     "class": "Class2",
-    "day": "friday",
-    "lesson_index": 5,
-    "classroom": 123
+    "day": "monday",
+    "lesson_index": 3,
+    "classroom": 101
   },
   {
     "subject": "Math",
-    "teacher": "David Lee",
+    "teacher": "Alice Smith",
     "class": "Class2",
-    "day": "monday",
+    "day": "thursday",
     "lesson_index": 5,
     "classroom": 305
   },
   {
     "subject": "Math",
-    "teacher": "David Lee",
+    "teacher": "Alice Smith",
     "class": "Class2",
+    "day": "thursday",
+    "lesson_index": 6,
+    "classroom": 305
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class2",
+    "day": "monday",
+    "lesson_index": 0,
+    "classroom": 119
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class2",
+    "day": "friday",
+    "lesson_index": 0,
+    "classroom": 220
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class2",
+    "day": "friday",
+    "lesson_index": 2,
+    "classroom": 209
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "class": "Class2",
+    "day": "wednesday",
+    "lesson_index": 2,
+    "classroom": 127
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "class": "Class2",
+    "day": "friday",
+    "lesson_index": 1,
+    "classroom": 212
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class3",
+    "day": "thursday",
+    "lesson_index": 7,
+    "classroom": 305
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class3",
+    "day": "friday",
+    "lesson_index": 8,
+    "classroom": 305
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class3",
     "day": "tuesday",
     "lesson_index": 3,
     "classroom": 210
@@ -74,391 +138,63 @@
   {
     "subject": "English",
     "teacher": "Bob Johnson",
-    "class": "Class2",
-    "day": "thursday",
-    "lesson_index": 3,
+    "class": "Class3",
+    "day": "monday",
+    "lesson_index": 1,
     "classroom": 111
   },
   {
     "subject": "English",
     "teacher": "Bob Johnson",
-    "class": "Class2",
-    "day": "friday",
-    "lesson_index": 3,
-    "classroom": 301
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class2",
-    "day": "monday",
-    "lesson_index": 0,
-    "classroom": 212
-  },
-  {
-    "subject": "History",
-    "teacher": "Bob Johnson",
-    "class": "Class2",
-    "day": "tuesday",
-    "lesson_index": 0,
-    "classroom": 305
-  },
-  {
-    "subject": "History",
-    "teacher": "Bob Johnson",
-    "class": "Class2",
-    "day": "thursday",
-    "lesson_index": 2,
-    "classroom": 114
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class3",
-    "day": "wednesday",
-    "lesson_index": 2,
-    "classroom": 116
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
     "class": "Class3",
     "day": "thursday",
-    "lesson_index": 6,
-    "classroom": 305
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class3",
-    "day": "friday",
-    "lesson_index": 6,
-    "classroom": 305
+    "lesson_index": 0,
+    "classroom": 104
   },
   {
     "subject": "English",
     "teacher": "Bob Johnson",
     "class": "Class3",
     "day": "thursday",
-    "lesson_index": 0,
-    "classroom": 125
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class3",
-    "day": "friday",
-    "lesson_index": 5,
-    "classroom": 213
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class3",
-    "day": "tuesday",
-    "lesson_index": 0,
-    "classroom": 219
-  },
-  {
-    "subject": "Biology",
-    "teacher": "Carol White",
-    "class": "Class3",
-    "day": "thursday",
-    "lesson_index": 3,
-    "classroom": 127
-  },
-  {
-    "subject": "Biology",
-    "teacher": "Carol White",
-    "class": "Class3",
-    "day": "friday",
-    "lesson_index": 4,
-    "classroom": 115
-  },
-  {
-    "subject": "Chemistry",
-    "teacher": "Carol White",
-    "class": "Class3",
-    "day": "monday",
-    "lesson_index": 0,
-    "classroom": 211
-  },
-  {
-    "subject": "Chemistry",
-    "teacher": "Carol White",
-    "class": "Class3",
-    "day": "wednesday",
     "lesson_index": 1,
-    "classroom": 128
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class4",
-    "day": "friday",
-    "lesson_index": 4,
-    "classroom": 211
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class4",
-    "day": "wednesday",
-    "lesson_index": 1,
-    "classroom": 207
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class4",
-    "day": "friday",
-    "lesson_index": 2,
-    "classroom": 124
-  },
-  {
-    "subject": "Computer Science",
-    "teacher": "David Lee",
-    "class": "Class4",
-    "day": "tuesday",
-    "lesson_index": 1,
-    "classroom": 101
-  },
-  {
-    "subject": "Computer Science",
-    "teacher": "David Lee",
-    "class": "Class4",
-    "day": "wednesday",
-    "lesson_index": 2,
-    "classroom": 115
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class5",
-    "day": "tuesday",
-    "lesson_index": 3,
-    "classroom": 304
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class5",
-    "day": "wednesday",
-    "lesson_index": 3,
-    "classroom": 102
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class5",
-    "day": "tuesday",
-    "lesson_index": 2,
-    "classroom": 115
-  },
-  {
-    "subject": "Art",
-    "teacher": "Eva Green",
-    "class": "Class5",
-    "day": "monday",
-    "lesson_index": 2,
-    "classroom": 101
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class6",
-    "day": "tuesday",
-    "lesson_index": 0,
-    "classroom": 209
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class6",
-    "day": "thursday",
-    "lesson_index": 5,
-    "classroom": 305
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class6",
-    "day": "monday",
-    "lesson_index": 4,
-    "classroom": 120
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class6",
-    "day": "thursday",
-    "lesson_index": 4,
-    "classroom": 131
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class6",
-    "day": "wednesday",
-    "lesson_index": 0,
     "classroom": 220
   },
   {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class6",
-    "day": "thursday",
-    "lesson_index": 2,
-    "classroom": 207
-  },
-  {
-    "subject": "Physics",
-    "teacher": "Alice Smith",
-    "class": "Class6",
-    "day": "tuesday",
-    "lesson_index": 2,
-    "classroom": 106
-  },
-  {
-    "subject": "Physics",
-    "teacher": "Alice Smith",
-    "class": "Class6",
-    "day": "wednesday",
-    "lesson_index": 1,
-    "classroom": 214
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class7",
-    "day": "thursday",
-    "lesson_index": 7,
-    "classroom": 305
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class7",
-    "day": "thursday",
-    "lesson_index": 0,
-    "classroom": 304
-  },
-  {
-    "subject": "Math",
-    "teacher": "David Lee",
-    "class": "Class7",
-    "day": "thursday",
-    "lesson_index": 2,
-    "classroom": 117
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class7",
-    "day": "monday",
-    "lesson_index": 2,
-    "classroom": 109
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class7",
-    "day": "wednesday",
-    "lesson_index": 1,
-    "classroom": 302
-  },
-  {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class7",
-    "day": "wednesday",
-    "lesson_index": 2,
-    "classroom": 215
-  },
-  {
-    "subject": "History",
-    "teacher": "Bob Johnson",
-    "class": "Class7",
-    "day": "monday",
-    "lesson_index": 1,
-    "classroom": 129
-  },
-  {
-    "subject": "History",
-    "teacher": "Bob Johnson",
-    "class": "Class7",
-    "day": "tuesday",
-    "lesson_index": 1,
-    "classroom": 130
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class8",
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "class": "Class3",
     "day": "monday",
     "lesson_index": 0,
-    "classroom": 107
+    "classroom": 128
   },
   {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class8",
-    "day": "thursday",
-    "lesson_index": 8,
-    "classroom": 305
-  },
-  {
-    "subject": "Math",
-    "teacher": "Alice Smith",
-    "class": "Class8",
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "class": "Class3",
     "day": "friday",
-    "lesson_index": 7,
-    "classroom": 305
+    "lesson_index": 0,
+    "classroom": 122
   },
   {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class8",
+    "subject": "Chemistry",
+    "teacher": "Carol White",
+    "class": "Class3",
     "day": "tuesday",
-    "lesson_index": 2,
-    "classroom": 101
+    "lesson_index": 0,
+    "classroom": 128
   },
   {
-    "subject": "English",
-    "teacher": "Bob Johnson",
-    "class": "Class8",
-    "day": "thursday",
-    "lesson_index": 1,
-    "classroom": 106
-  },
-  {
-    "subject": "English",
-    "teacher": "Eva Green",
-    "class": "Class8",
+    "subject": "Chemistry",
+    "teacher": "Carol White",
+    "class": "Class3",
     "day": "wednesday",
-    "lesson_index": 2,
-    "classroom": 120
-  },
-  {
-    "subject": "Biology",
-    "teacher": "Carol White",
-    "class": "Class8",
-    "day": "monday",
-    "lesson_index": 1,
-    "classroom": 130
-  },
-  {
-    "subject": "Biology",
-    "teacher": "Carol White",
-    "class": "Class8",
-    "day": "monday",
-    "lesson_index": 4,
-    "classroom": 109
+    "lesson_index": 0,
+    "classroom": 122
   },
   {
     "subject": "Math",
     "teacher": "Alice Smith",
-    "class": "Class9",
+    "class": "Class4",
     "day": "monday",
     "lesson_index": 1,
     "classroom": 118
@@ -466,18 +202,282 @@
   {
     "subject": "Math",
     "teacher": "Alice Smith",
-    "class": "Class9",
+    "class": "Class4",
     "day": "friday",
+    "lesson_index": 4,
+    "classroom": 128
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class4",
+    "day": "friday",
+    "lesson_index": 7,
+    "classroom": 305
+  },
+  {
+    "subject": "Computer Science",
+    "teacher": "David Lee",
+    "class": "Class4",
+    "day": "wednesday",
+    "lesson_index": 1,
+    "classroom": 216
+  },
+  {
+    "subject": "Computer Science",
+    "teacher": "David Lee",
+    "class": "Class4",
+    "day": "wednesday",
+    "lesson_index": 2,
+    "classroom": 207
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class5",
+    "day": "tuesday",
+    "lesson_index": 3,
+    "classroom": 209
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class5",
+    "day": "thursday",
+    "lesson_index": 4,
+    "classroom": 211
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class5",
+    "day": "friday",
+    "lesson_index": 5,
+    "classroom": 212
+  },
+  {
+    "subject": "Art",
+    "teacher": "Eva Green",
+    "class": "Class5",
+    "day": "tuesday",
+    "lesson_index": 2,
+    "classroom": 101
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class6",
+    "day": "monday",
+    "lesson_index": 0,
+    "classroom": 209
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class6",
+    "day": "wednesday",
+    "lesson_index": 2,
+    "classroom": 215
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class6",
+    "day": "monday",
+    "lesson_index": 5,
+    "classroom": 305
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class6",
+    "day": "wednesday",
+    "lesson_index": 1,
+    "classroom": 131
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class6",
+    "day": "thursday",
+    "lesson_index": 2,
+    "classroom": 220
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class6",
+    "day": "wednesday",
+    "lesson_index": 0,
+    "classroom": 109
+  },
+  {
+    "subject": "Physics",
+    "teacher": "Alice Smith",
+    "class": "Class6",
+    "day": "wednesday",
+    "lesson_index": 3,
+    "classroom": 204
+  },
+  {
+    "subject": "Physics",
+    "teacher": "Alice Smith",
+    "class": "Class6",
+    "day": "friday",
+    "lesson_index": 0,
+    "classroom": 302
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class7",
+    "day": "friday",
+    "lesson_index": 6,
+    "classroom": 305
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class7",
+    "day": "monday",
+    "lesson_index": 3,
+    "classroom": 203
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class7",
+    "day": "wednesday",
+    "lesson_index": 3,
+    "classroom": 213
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class7",
+    "day": "monday",
+    "lesson_index": 2,
+    "classroom": 203
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class7",
+    "day": "tuesday",
+    "lesson_index": 0,
+    "classroom": 125
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class7",
+    "day": "thursday",
+    "lesson_index": 1,
+    "classroom": 119
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "class": "Class7",
+    "day": "tuesday",
+    "lesson_index": 1,
+    "classroom": 208
+  },
+  {
+    "subject": "History",
+    "teacher": "Bob Johnson",
+    "class": "Class7",
+    "day": "friday",
+    "lesson_index": 0,
+    "classroom": 102
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class8",
+    "day": "wednesday",
+    "lesson_index": 1,
+    "classroom": 220
+  },
+  {
+    "subject": "Math",
+    "teacher": "Alice Smith",
+    "class": "Class8",
+    "day": "thursday",
     "lesson_index": 8,
     "classroom": 305
   },
   {
     "subject": "Math",
     "teacher": "David Lee",
+    "class": "Class8",
+    "day": "thursday",
+    "lesson_index": 0,
+    "classroom": 101
+  },
+  {
+    "subject": "English",
+    "teacher": "Bob Johnson",
+    "class": "Class8",
+    "day": "tuesday",
+    "lesson_index": 0,
+    "classroom": 111
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class8",
+    "day": "monday",
+    "lesson_index": 1,
+    "classroom": 104
+  },
+  {
+    "subject": "English",
+    "teacher": "Eva Green",
+    "class": "Class8",
+    "day": "monday",
+    "lesson_index": 2,
+    "classroom": 208
+  },
+  {
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "class": "Class8",
+    "day": "tuesday",
+    "lesson_index": 4,
+    "classroom": 117
+  },
+  {
+    "subject": "Biology",
+    "teacher": "Carol White",
+    "class": "Class8",
+    "day": "wednesday",
+    "lesson_index": 4,
+    "classroom": 305
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class9",
+    "day": "monday",
+    "lesson_index": 4,
+    "classroom": 202
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
     "class": "Class9",
     "day": "thursday",
-    "lesson_index": 3,
-    "classroom": 131
+    "lesson_index": 1,
+    "classroom": 213
+  },
+  {
+    "subject": "Math",
+    "teacher": "David Lee",
+    "class": "Class9",
+    "day": "thursday",
+    "lesson_index": 2,
+    "classroom": 217
   },
   {
     "subject": "Physics",
@@ -485,23 +485,23 @@
     "class": "Class9",
     "day": "tuesday",
     "lesson_index": 1,
-    "classroom": 204
+    "classroom": 209
   },
   {
     "subject": "Physics",
     "teacher": "Alice Smith",
     "class": "Class9",
-    "day": "wednesday",
-    "lesson_index": 3,
-    "classroom": 104
+    "day": "friday",
+    "lesson_index": 1,
+    "classroom": 301
   },
   {
     "subject": "Computer Science",
     "teacher": "David Lee",
     "class": "Class9",
-    "day": "monday",
-    "lesson_index": 2,
-    "classroom": 301
+    "day": "thursday",
+    "lesson_index": 3,
+    "classroom": 305
   },
   {
     "subject": "Computer Science",
@@ -509,6 +509,6 @@
     "class": "Class9",
     "day": "friday",
     "lesson_index": 0,
-    "classroom": 212
+    "classroom": 202
   }
 ]

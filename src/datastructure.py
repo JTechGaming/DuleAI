@@ -1,21 +1,25 @@
 import json
+import os
 from enum import Enum
 import datetime
 
-dataFolder = "data/"
+# Get the directory where this script is located, then go up one level to get project root
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(script_dir)
+dataFolder = os.path.join(project_root, "data")
 
-commonFile = dataFolder + "common.json"
-teachersFile = dataFolder + "teachers.json"
-classesFile = dataFolder + "classes.json"
-recessFile = dataFolder + "recess.json"
-subjectsFile = dataFolder + "subjects.json"
-studentsFile = dataFolder + "students.json"
-classroomsFile = dataFolder + "classrooms.json"
-fixedHoursFile = dataFolder + "fixed_hours.json"
+commonFile = os.path.join(dataFolder, "common.json")
+teachersFile = os.path.join(dataFolder, "teachers.json")
+classesFile = os.path.join(dataFolder, "classes.json")
+recessFile = os.path.join(dataFolder, "recess.json")
+subjectsFile = os.path.join(dataFolder, "subjects.json")
+studentsFile = os.path.join(dataFolder, "students.json")
+classroomsFile = os.path.join(dataFolder, "classrooms.json")
+fixedHoursFile = os.path.join(dataFolder, "fixed_hours.json")
 
-trainingDataFolder = dataFolder + "training/"
-trainedDataFolder = dataFolder + "trained/"
-trainedModelFolder = dataFolder + "trained_models/"
+trainingDataFolder = os.path.join(dataFolder, "training")
+trainedDataFolder = os.path.join(dataFolder, "trained")
+trainedModelFolder = os.path.join(dataFolder, "trained_models")
 
 def load_json_file(file_path):
     with open(file_path, "r") as file:

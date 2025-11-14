@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the src/pages directory
 app.use(express.static(path.join(__dirname, 'src', 'pages')));
 
+// Serve data files from the data directory
+app.use('/data', express.static(path.join(__dirname, 'data')));
+
 // Paths
 const DATA_DIR = path.join(__dirname, 'data');
 const SRC_DIR = path.join(__dirname, 'src');
@@ -89,6 +92,9 @@ app.post('/api/run-schedule-generator', async (req, res) => {
             });
         }
         
+        // Flag to track if response has been sent
+        let responseSent = false;
+        
         // Run the Python script
         const pythonProcess = spawn('python', [RUN_PY_PATH], {
             cwd: __dirname,
@@ -110,6 +116,12 @@ app.post('/api/run-schedule-generator', async (req, res) => {
         
         pythonProcess.on('close', async (code) => {
             console.log(`Python script exited with code ${code}`);
+            
+            if (responseSent) {
+                console.log('Response already sent, skipping close handler');
+                return;
+            }
+            responseSent = true;
             
             if (code === 0) {
                 // Check if output file was generated
@@ -134,6 +146,12 @@ app.post('/api/run-schedule-generator', async (req, res) => {
         
         pythonProcess.on('error', (error) => {
             console.error('Error running Python script:', error);
+            if (responseSent) {
+                console.log('Response already sent, skipping error handler');
+                return;
+            }
+            responseSent = true;
+            
             res.status(500).json({
                 success: false,
                 error: 'Failed to start Python process: ' + error.message
@@ -141,8 +159,10 @@ app.post('/api/run-schedule-generator', async (req, res) => {
         });
         
         // Set timeout for long-running processes
-        setTimeout(() => {
-            if (!pythonProcess.killed) {
+        const timeoutId = setTimeout(() => {
+            if (!responseSent && !pythonProcess.killed) {
+                console.log('Python script timed out, killing process');
+                responseSent = true;
                 pythonProcess.kill();
                 res.status(408).json({
                     success: false,
@@ -150,6 +170,11 @@ app.post('/api/run-schedule-generator', async (req, res) => {
                 });
             }
         }, 60000); // 60 second timeout
+        
+        // Clear timeout if process completes normally
+        pythonProcess.on('close', () => {
+            clearTimeout(timeoutId);
+        });
         
     } catch (error) {
         console.error('Error in run-schedule-generator:', error);

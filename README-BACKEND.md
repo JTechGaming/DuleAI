@@ -10,7 +10,7 @@
 npm install
 ```
 ```bash
-npm start
+node backend-server.js
 ```
 - Main page: http://localhost:3000/
 - Generate settings: http://localhost:3000/generate

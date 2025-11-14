@@ -1,11 +1,16 @@
+// Global variables to make data accessible to import/export functions
+let currentScheduleData = [];
+let lessonTimes = {};
+
 document.addEventListener("DOMContentLoaded", function() {
     const scheduleContent = document.getElementById("schedule-content");
 
     (async function() {
         try {
-            const res = await fetch('../../../data/out/generated.json');
+            const res = await fetch('/data/out/generated.json');
             if (!res.ok) throw new Error(`Failed to fetch schedule: ${res.status} ${res.statusText}`);
             const scheduleData = await res.json();
+            currentScheduleData = scheduleData;
             if (!Array.isArray(scheduleData)) {
                 console.warn('Expected schedule JSON to be an array:', scheduleData);
                 return;
@@ -29,9 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             // Load common.json to map lesson_index -> time
-            let lessonTimes = {};
             try {
-                const commonRes = await fetch('../../../data/common.json');
+                const commonRes = await fetch('/data/common.json');
                 if (!commonRes.ok) throw new Error(`Failed to fetch common: ${commonRes.status} ${commonRes.statusText}`);
                 const common = await commonRes.json();
 
@@ -148,9 +152,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Function to filter schedule by selected class
             function filterScheduleByClass(selectedClass) {
-                const filteredData = scheduleData.filter(item => item.class === selectedClass);
+                const filteredData = currentScheduleData.filter(item => item.class === selectedClass);
                 renderSchedule(filteredData);
             }
+
+            // Make functions globally accessible for import functionality
+            window.filterScheduleByClass = filterScheduleByClass;
+            window.renderSchedule = renderSchedule;
 
             // Event listener for class selection
             classSelector.addEventListener("change", function() {
@@ -199,3 +207,138 @@ document.addEventListener("DOMContentLoaded", function() {
         button.textContent = isDarkMode ? "Light Mode" : "Dark Mode";
     }
 });
+
+async function importSchedule() {
+    try {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.onchange = async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            try {
+                const text = await file.text();
+                const importedScheduleData = JSON.parse(text);
+                
+                // Validate that the imported data is an array with expected structure
+                if (!Array.isArray(importedScheduleData)) {
+                    throw new Error('Invalid schedule format: Expected an array of schedule items');
+                }
+                
+                // Basic validation of schedule items
+                const hasValidStructure = importedScheduleData.every(item => 
+                    item.hasOwnProperty('subject') && 
+                    item.hasOwnProperty('teacher') && 
+                    item.hasOwnProperty('class') && 
+                    item.hasOwnProperty('day') && 
+                    item.hasOwnProperty('lesson_index') && 
+                    item.hasOwnProperty('classroom')
+                );
+                
+                if (!hasValidStructure) {
+                    throw new Error('Invalid schedule format: Items missing required properties (subject, teacher, class, day, lesson_index, classroom)');
+                }
+                
+                // Update the global variable
+                currentScheduleData = importedScheduleData;
+                
+                // Clear and rebuild the class selector
+                const classSelector = document.getElementById("class-selector");
+                const classSet = new Set();
+                importedScheduleData.forEach(item => {
+                    if (item.class) {
+                        classSet.add(item.class);
+                    }
+                });
+                
+                // Clear existing options
+                classSelector.innerHTML = '';
+                
+                // Add new class options
+                classSet.forEach(className => {
+                    const option = document.createElement("option");
+                    option.value = className;
+                    option.textContent = className;
+                    classSelector.appendChild(option);
+                });
+                
+                // Trigger the change event to re-render with the first class
+                if (classSelector.options.length > 0) {
+                    classSelector.selectedIndex = 0;
+                    // Dispatch a change event to trigger the existing event handler
+                    classSelector.dispatchEvent(new Event('change'));
+                }
+                
+                alert('Schedule imported and displayed successfully!');
+                
+            } catch (parseError) {
+                console.error('Error parsing imported file:', parseError);
+                alert('Failed to import schedule: ' + parseError.message);
+            }
+        };
+        input.click();
+    } catch (e) {
+        console.error('Error importing schedule:', e);
+        alert('Failed to import schedule: ' + e.message);
+    }
+}
+
+async function exportSchedule() {
+    try {
+        const res = await fetch('/data/out/generated.json');
+        if (!res.ok) throw new Error(`Failed to fetch schedule: ${res.status} ${res.statusText}`);
+        const scheduleData = await res.json();
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(scheduleData, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "exported_schedule.json");
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+        alert('Schedule exported successfully!');
+    } catch (e) {
+        console.error('Error exporting schedule:', e);
+        alert('Failed to export schedule: ' + e.message);
+    }
+}
+
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
+async function downloadScheduleAsPDF() {
+    try {
+        // Load jsPDF dynamically if not already loaded
+        if (!window.jspdf || !window.jspdf.jsPDF) {
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+        }
+        
+        // Load html2canvas dynamically if not already loaded
+        if (!window.html2canvas) {
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+        }
+
+        const { jsPDF } = window.jspdf;
+        const scheduleContent = document.getElementById("schedule-content");
+        const pdf = new jsPDF('landscape', 'pt', 'a4');
+
+        // Use html2canvas to capture the schedule content
+        const canvas = await html2canvas(scheduleContent, { scale: 2 });
+        const imgData = canvas.toDataURL('image/png');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('schedule.pdf');
+    } catch (error) {
+        console.error('Error downloading PDF:', error);
+        alert('Failed to download PDF: ' + error.message);
+    }
+}

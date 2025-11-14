@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update saved configurations dropdown - with retry mechanism
     updateSavedConfigsDropdown();
+
+    refreshDropdown();
 });
 
 // Tab navigation
@@ -583,8 +585,8 @@ async function generateSchedule() {
         
         // Redirect to generated schedule page after a delay
         setTimeout(() => {
-            window.location.href = 'generated_schedule.html';
-        }, 2000);
+            window.location.href = 'schedule';
+        }, 1000);
         
     } catch (error) {
         statusDiv.innerHTML = `<div class="status-error">❌ Error: ${error.message}</div>`;

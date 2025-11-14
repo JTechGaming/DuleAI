@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="navbar">
-        <button onclick="location.href='index.html'" id="home-button">Home</button>
+        <button onclick="location.href='/'" id="home-button">Home</button>
         <button id="dark-mode-toggle" onclick="darkModeToggle()">Toggle Dark Mode</button>
     </div>
     <header>
@@ -21,6 +21,11 @@
         <section id="schedule-content">
             
         </section>
+        <div class="cta-section">
+            <button id="import-schedule-btn" onclick="importSchedule()">Import Schedule</button>
+            <button id="export-schedule-btn" onclick="exportSchedule()">Export Schedule</button>
+            <button id="download-pdf-btn" onclick="downloadScheduleAsPDF()">Download as PDF</button>
+        </div>
     </main>
     <footer>
         <h3>Contact Us</h3>
