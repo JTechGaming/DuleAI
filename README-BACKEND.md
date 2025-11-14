@@ -3,7 +3,7 @@
 ### Prerequisites
 - Node.js (v14 or higher)
 - Python (v3.7 or higher)
-- NPM or Yarn
+- NPM
 
 ### How to run
 ```bash
@@ -16,7 +16,7 @@ node backend-server.js
 - Generate settings: http://localhost:3000/generate
 - View schedule: http://localhost:3000/schedule
 
-## Endpoints
+## Endpoints (Auto Generated)
 
 ### POST `/api/save-json-files`
 Saves the form data as JSON files in the data directory.
