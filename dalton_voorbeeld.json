@@ -1,0 +1,1096 @@
+{
+  "name": "dalton-voorbeeld",
+  "data": {
+    "subjects": [
+      {
+        "name": "Math",
+        "abbreviation": "MATH",
+        "requiredHours": 3,
+        "coreSubject": true,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "English",
+        "abbreviation": "ENG",
+        "requiredHours": 3,
+        "coreSubject": true,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Physics",
+        "abbreviation": "PHY",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "History",
+        "abbreviation": "HIS",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Biology",
+        "abbreviation": "BIO",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Chemistry",
+        "abbreviation": "CHEM",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Computer Science",
+        "abbreviation": "CS",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Art",
+        "abbreviation": "ART",
+        "requiredHours": 1,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Dutch",
+        "abbreviation": "NETL",
+        "requiredHours": 3,
+        "coreSubject": true,
+        "requiredClassroomsParameters": []
+      },
+      {
+        "name": "Music",
+        "abbreviation": "MU",
+        "requiredHours": 2,
+        "coreSubject": false,
+        "requiredClassroomsParameters": []
+      }
+    ],
+    "teachers": [
+      {
+        "name": "Alice Smith",
+        "abbreviation": "AS",
+        "availability": {
+          "monday": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "tuesday": [
+            1,
+            2,
+            3
+          ],
+          "wednesday": [
+            2,
+            3,
+            4
+          ],
+          "thursday": [
+            6,
+            7,
+            8,
+            9
+          ],
+          "friday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "subjects": [
+          "Math",
+          "Physics"
+        ]
+      },
+      {
+        "name": "Bob Johnson",
+        "abbreviation": "BJ",
+        "availability": {
+          "monday": [
+            2,
+            3
+          ],
+          "tuesday": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "wednesday": [
+            2,
+            3,
+            4
+          ],
+          "thursday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "friday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        },
+        "subjects": [
+          "English",
+          "History"
+        ]
+      },
+      {
+        "name": "Carol White",
+        "abbreviation": "CW",
+        "availability": {
+          "monday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "tuesday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "wednesday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "thursday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "friday": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "subjects": [
+          "Biology",
+          "Chemistry"
+        ]
+      },
+      {
+        "name": "David Lee",
+        "abbreviation": "DL",
+        "availability": {
+          "monday": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "tuesday": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "wednesday": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "thursday": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "friday": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "subjects": [
+          "Math",
+          "Computer Science"
+        ]
+      },
+      {
+        "name": "Eva Green",
+        "abbreviation": "EG",
+        "availability": {
+          "monday": [
+            1,
+            2,
+            3
+          ],
+          "tuesday": [
+            1,
+            2,
+            3
+          ],
+          "wednesday": [
+            1,
+            2,
+            3
+          ],
+          "thursday": [
+            1,
+            2,
+            3
+          ],
+          "friday": [
+            1,
+            2,
+            3
+          ]
+        },
+        "subjects": [
+          "English",
+          "Art"
+        ]
+      },
+      {
+        "name": "Jasper Nieuweboer",
+        "abbreviation": "JN",
+        "availability": {
+          "monday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "tuesday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "wednesday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "thursday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "friday": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "subjects": [
+          "Dutch",
+          "Music"
+        ]
+      }
+    ],
+    "classrooms": [
+      {
+        "number": 101,
+        "capacity": 30,
+        "specialties": []
+      },
+      {
+        "number": 102,
+        "capacity": 25,
+        "specialties": []
+      },
+      {
+        "number": 103,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 104,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 105,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 106,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 107,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 108,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 109,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 110,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 111,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 112,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 113,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 114,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 115,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 116,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 117,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 118,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 119,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 120,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 121,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 122,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 123,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 124,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 125,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 126,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 127,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 128,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 129,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 130,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 131,
+        "capacity": 20,
+        "specialties": []
+      },
+      {
+        "number": 201,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 202,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 203,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 204,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 205,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 206,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 207,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 208,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 209,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 210,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 211,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 212,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 213,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 214,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 215,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 216,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 217,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 218,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 219,
+        "capacity": 20,
+        "specialties": [
+          "science"
+        ]
+      },
+      {
+        "number": 220,
+        "capacity": 20,
+        "specialties": [
+          "computers"
+        ]
+      },
+      {
+        "number": 301,
+        "capacity": 15,
+        "specialties": [
+          "art"
+        ]
+      },
+      {
+        "number": 302,
+        "capacity": 15,
+        "specialties": [
+          "art"
+        ]
+      },
+      {
+        "number": 303,
+        "capacity": 15,
+        "specialties": [
+          "art"
+        ]
+      },
+      {
+        "number": 304,
+        "capacity": 15,
+        "specialties": [
+          "art"
+        ]
+      },
+      {
+        "number": 305,
+        "capacity": 15,
+        "specialties": [
+          "art"
+        ]
+      }
+    ],
+    "classes": [
+      {
+        "name": "Class1",
+        "year": [
+          "mavo",
+          1,
+          1
+        ],
+        "tutor": "AS",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "Music",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class2",
+        "year": [
+          "havo",
+          2,
+          1
+        ],
+        "tutor": "BJ",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "History",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class3",
+        "year": [
+          "vwo",
+          3,
+          1
+        ],
+        "tutor": "CW",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "Biology",
+          "Chemistry",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class4",
+        "year": [
+          "mavo",
+          1,
+          2
+        ],
+        "tutor": "DL",
+        "coreSubjects": [
+          "Math",
+          "Computer Science",
+          "Dutch",
+          "Music"
+        ]
+      },
+      {
+        "name": "Class5",
+        "year": [
+          "havo",
+          2,
+          2
+        ],
+        "tutor": "EG",
+        "coreSubjects": [
+          "English",
+          "Art",
+          "Dutch",
+          "Music"
+        ]
+      },
+      {
+        "name": "Class6",
+        "year": [
+          "vwo",
+          3,
+          2
+        ],
+        "tutor": "AS",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "Physics",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class7",
+        "year": [
+          "mavo",
+          1,
+          3
+        ],
+        "tutor": "BJ",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "History",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class8",
+        "year": [
+          "havo",
+          2,
+          3
+        ],
+        "tutor": "CW",
+        "coreSubjects": [
+          "Math",
+          "English",
+          "Biology",
+          "Dutch"
+        ]
+      },
+      {
+        "name": "Class9",
+        "year": [
+          "vwo",
+          3,
+          3
+        ],
+        "tutor": "DL",
+        "coreSubjects": [
+          "Math",
+          "Computer Science",
+          "Physics",
+          "Dutch"
+        ]
+      }
+    ],
+    "common": {
+      "hours": [
+        [
+          "lesson",
+          "monday",
+          "08:00",
+          "08:45"
+        ],
+        [
+          "lesson",
+          "monday",
+          "08:50",
+          "09:35"
+        ],
+        [
+          "lesson",
+          "monday",
+          "09:55",
+          "10:40"
+        ],
+        [
+          "lesson",
+          "monday",
+          "10:45",
+          "11:30"
+        ],
+        [
+          "lesson",
+          "monday",
+          "11:35",
+          "12:20"
+        ],
+        [
+          "lesson",
+          "monday",
+          "13:15",
+          "14:00"
+        ],
+        [
+          "lesson",
+          "monday",
+          "14:05",
+          "14:50"
+        ],
+        [
+          "lesson",
+          "monday",
+          "14:55",
+          "15:40"
+        ],
+        [
+          "lesson",
+          "monday",
+          "15:45",
+          "16:30"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "08:00",
+          "08:45"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "08:50",
+          "09:35"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "09:55",
+          "10:40"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "10:45",
+          "11:30"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "11:35",
+          "12:20"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "13:15",
+          "14:00"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "14:05",
+          "14:50"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "14:55",
+          "15:40"
+        ],
+        [
+          "lesson",
+          "tuesday",
+          "15:45",
+          "16:30"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "08:00",
+          "08:45"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "08:50",
+          "09:35"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "09:55",
+          "10:40"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "10:45",
+          "11:30"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "11:35",
+          "12:20"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "13:15",
+          "14:00"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "14:05",
+          "14:50"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "14:55",
+          "15:40"
+        ],
+        [
+          "lesson",
+          "wednesday",
+          "15:45",
+          "16:30"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "08:00",
+          "08:45"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "08:50",
+          "09:35"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "09:55",
+          "10:40"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "10:45",
+          "11:30"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "11:35",
+          "12:20"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "13:15",
+          "14:00"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "14:05",
+          "14:50"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "14:55",
+          "15:40"
+        ],
+        [
+          "lesson",
+          "thursday",
+          "15:45",
+          "16:30"
+        ],
+        [
+          "lesson",
+          "friday",
+          "08:00",
+          "08:45"
+        ],
+        [
+          "lesson",
+          "friday",
+          "08:50",
+          "09:35"
+        ],
+        [
+          "lesson",
+          "friday",
+          "09:55",
+          "10:40"
+        ],
+        [
+          "lesson",
+          "friday",
+          "10:45",
+          "11:30"
+        ],
+        [
+          "lesson",
+          "friday",
+          "11:35",
+          "12:20"
+        ],
+        [
+          "lesson",
+          "friday",
+          "13:15",
+          "14:00"
+        ],
+        [
+          "lesson",
+          "friday",
+          "14:05",
+          "14:50"
+        ],
+        [
+          "lesson",
+          "friday",
+          "14:55",
+          "15:40"
+        ],
+        [
+          "lesson",
+          "friday",
+          "15:45",
+          "16:30"
+        ]
+      ],
+      "preferredOddHoursEnabled": false,
+      "generationType": "least_odd_hours_students"
+    },
+    "fixedHours": []
+  },
+  "exportedAt": "2025-11-14T21:02:18.179Z",
+  "version": "1.0"
+}
