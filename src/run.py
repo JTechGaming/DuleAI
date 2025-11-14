@@ -177,75 +177,52 @@ class Run:
         
         # Optimization objective based on generation type
         if self.common.generationType == Type.LEAST_ODD_HOURS_STUDENTS:
-            # Minimize gaps in student schedules (odd hours between lessons)
-            gap_variables = []
+            # Simplified approach: minimize gaps by encouraging consecutive lessons
+            gap_penalties = []
             
             for class_name in self.class_names:
                 for day in Days:
                     day_slots = day_to_lesson_slots.get(day, [])
-                    if len(day_slots) <= 1:
+                    if len(day_slots) <= 2:
                         continue
                     
-                    # For each pair of consecutive time slots, create a gap variable
-                    for i in range(len(day_slots) - 1):
-                        current_slot = day_slots[i]
-                        next_slot = day_slots[i + 1]
-                        
-                        # Create boolean variables for whether class has lesson in each slot
-                        has_lesson_current = self.model.NewBoolVar(f'has_lesson_{class_name}_{day.value}_{i}')
-                        has_lesson_next = self.model.NewBoolVar(f'has_lesson_{class_name}_{day.value}_{i+1}')
-                        
-                        # Link these to the actual lesson assignments
-                        self.model.Add(has_lesson_current == sum(x[(class_name, subject, teacher, current_slot, room)]
-                                                                  for subject in self.subject_names
-                                                                  for teacher in self.teacher_names
-                                                                  for room in self.classroom_numbers))
-                        
-                        self.model.Add(has_lesson_next == sum(x[(class_name, subject, teacher, next_slot, room)]
-                                                               for subject in self.subject_names
-                                                               for teacher in self.teacher_names
-                                                               for room in self.classroom_numbers))
-                        
-                        # Create gap variable: 1 if there's a gap between lessons
-                        gap_var = self.model.NewBoolVar(f'gap_{class_name}_{day.value}_{i}')
-                        
-                        # Gap exists if: (has lesson before gap) AND (no lesson in current slot) AND (has lesson after gap)
-                        # For simplicity, we'll penalize any empty slot between two lessons
-                        # This is a complex constraint, so we'll use a simpler approach:
-                        # Penalize having no lesson in a slot if there are lessons before and after
-                        
-                        # Look for patterns where there's a lesson, then gap, then lesson
-                        if i > 0:
-                            prev_slot = day_slots[i - 1]
-                            has_lesson_prev = self.model.NewBoolVar(f'has_lesson_{class_name}_{day.value}_{i-1}')
-                            self.model.Add(has_lesson_prev == sum(x[(class_name, subject, teacher, prev_slot, room)]
-                                                                  for subject in self.subject_names
-                                                                  for teacher in self.teacher_names
-                                                                  for room in self.classroom_numbers))
-                            
-                            # Gap penalty: if prev has lesson AND current has no lesson AND next has lesson
-                            # gap_var = prev_lesson AND (NOT current_lesson) AND next_lesson
-                            # This is complex in CP-SAT, so we'll use a penalty approach
-                            penalty_var = self.model.NewBoolVar(f'penalty_{class_name}_{day.value}_{i}')
-                            
-                            # penalty_var = 1 if (has_lesson_prev = 1) AND (has_lesson_current = 0) AND (has_lesson_next = 1)
-                            self.model.Add(penalty_var <= has_lesson_prev)
-                            self.model.Add(penalty_var <= 1 - has_lesson_current)
-                            self.model.Add(penalty_var <= has_lesson_next)
-                            self.model.Add(penalty_var >= has_lesson_prev + (1 - has_lesson_current) + has_lesson_next - 2)
-                            
-                            gap_variables.append(penalty_var)
+                    # Simple approach: for each day, penalize having lessons at non-consecutive times
+                    # Create boolean variables for whether class has a lesson in each slot
+                    lesson_vars = []
+                    for i, time_slot in enumerate(day_slots):
+                        has_lesson = self.model.NewBoolVar(f'has_lesson_{class_name}_{day.value}_{i}')
+                        self.model.Add(has_lesson == sum(x[(class_name, subject, teacher, time_slot, room)]
+                                                        for subject in self.subject_names
+                                                        for teacher in self.teacher_names
+                                                        for room in self.classroom_numbers))
+                        lesson_vars.append(has_lesson)
+                    
+                    # Add penalty for gaps: if lesson[i] = 1 and lesson[i+2] = 1 but lesson[i+1] = 0
+                    for i in range(len(lesson_vars) - 2):
+                        gap_penalty = self.model.NewBoolVar(f'gap_penalty_{class_name}_{day.value}_{i}')
+                        # gap_penalty = 1 if lesson[i] = 1 AND lesson[i+1] = 0 AND lesson[i+2] = 1
+                        self.model.Add(gap_penalty <= lesson_vars[i])
+                        self.model.Add(gap_penalty <= 1 - lesson_vars[i + 1])
+                        self.model.Add(gap_penalty <= lesson_vars[i + 2])
+                        self.model.Add(gap_penalty >= lesson_vars[i] + (1 - lesson_vars[i + 1]) + lesson_vars[i + 2] - 2)
+                        gap_penalties.append(gap_penalty)
             
-            # Minimize total gap penalties
-            if gap_variables:
-                self.model.Minimize(sum(gap_variables))
+            # Minimize total gap penalties (keep it simple)
+            if gap_penalties:
+                self.model.Minimize(sum(gap_penalties))
         
         # Solve the model and collect results into a list to produce valid JSON
         results = []
 
-        # Set solver parameters for better performance with optimization
+        # Set solver parameters for better performance
+        self.solver.parameters.max_time_in_seconds = 30  # 30 seconds max for any optimization
+        self.solver.parameters.num_search_workers = 4  # Use multiple threads
+        
         if self.common.generationType == Type.LEAST_ODD_HOURS_STUDENTS:
-            self.solver.parameters.max_time_in_seconds = 120  # 2 minutes max
+            # For complex optimization, allow slightly more time but with early termination
+            self.solver.parameters.max_time_in_seconds = 45
+            # Stop when we find a reasonably good solution
+            self.solver.parameters.cp_model_presolve = True
         
         status = self.solver.Solve(self.model)
         if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
@@ -266,7 +243,32 @@ class Run:
                                         "classroom": room
                                     })
         else:
-            print('No solution found.')
+            if status == cp_model.INFEASIBLE:
+                print('No solution found - problem is infeasible.')
+            elif status == cp_model.MODEL_INVALID:
+                print('No solution found - model is invalid.')
+            else:
+                print(f'No solution found - solver status: {self.solver.StatusName(status)}')
+
+        # Add fixed hours to the results
+        for fixed_hour in self.fixed_hours:
+            fixed_day = Days[fixed_hour.day.upper()]
+            fixed_lesson_index = fixed_hour.hour - 1  # Convert 1-based to 0-based index
+            
+            # Find the matching day slots to get the correct lesson index
+            day_slots = day_to_lesson_slots.get(fixed_day, [])
+            if 0 <= fixed_lesson_index < len(day_slots):
+                fixed_classroom = int(fixed_hour.classroomID) if isinstance(fixed_hour.classroomID, str) else fixed_hour.classroomID
+                
+                results.append({
+                    "subject": fixed_hour.name,
+                    "teacher": "Fixed Activity",
+                    "class": "All Classes",
+                    "day": fixed_day.value,
+                    "lesson_index": fixed_lesson_index,
+                    "classroom": fixed_classroom
+                })
+                print(f' - {fixed_hour.name} (Fixed) for All Classes at {fixed_day.value} : {fixed_lesson_index} in {fixed_classroom}')
 
         # Use absolute path for output
         script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -279,6 +281,9 @@ class Run:
             json.dump(results, file, indent=2, ensure_ascii=False)
 
         print(f'Solver status: {self.solver.StatusName(status)}')
+        print(f'Solve time: {self.solver.WallTime():.2f} seconds')
+        if status in (cp_model.OPTIMAL, cp_model.FEASIBLE):
+            print(f'Generated {len(results)} lessons')
         print(f'Solver status: {self.solver.StatusName(status)}')
 
 run = Run()
