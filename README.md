@@ -16,6 +16,8 @@ node backend-server.js
 - Generate settings: http://localhost:3000/generate
 - View schedule: http://localhost:3000/schedule
 
+Use the dalton-voorbeeld.json as an example settings profile to import.
+
 ## Endpoints (Auto Generated)
 
 ### POST `/api/save-json-files`
