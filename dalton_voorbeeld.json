@@ -1089,8 +1089,57 @@
       "preferredOddHoursEnabled": false,
       "generationType": "least_odd_hours_students"
     },
-    "fixedHours": []
+    "fixedHours": [
+      {
+        "day": "Monday",
+        "hour": 3,
+        "name": "DaltonM1",
+        "classroomID": "1"
+      },
+      {
+        "day": "Monday",
+        "hour": 5,
+        "name": "DaltonM2",
+        "classroomID": "1"
+      },
+      {
+        "day": "Wednesday",
+        "hour": 3,
+        "name": "DaltonW1",
+        "classroomID": "1"
+      },
+      {
+        "day": "Wednesday",
+        "hour": 5,
+        "name": "DaltonW2",
+        "classroomID": "1"
+      },
+      {
+        "day": "Thursday",
+        "hour": 3,
+        "name": "DaltonT1",
+        "classroomID": "1"
+      },
+      {
+        "day": "Thursday",
+        "hour": 5,
+        "name": "DaltonT2",
+        "classroomID": "1"
+      },
+      {
+        "day": "Friday",
+        "hour": 3,
+        "name": "DaltonF1",
+        "classroomID": "1"
+      },
+      {
+        "day": "Friday",
+        "hour": 5,
+        "name": "DaltonF2",
+        "classroomID": "1"
+      }
+    ]
   },
-  "exportedAt": "2025-11-14T21:02:18.179Z",
+  "exportedAt": "2025-11-14T21:10:53.353Z",
   "version": "1.0"
 }
